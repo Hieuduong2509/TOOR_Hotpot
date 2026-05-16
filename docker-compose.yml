@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: restaurant_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./BE/src/data/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - '5433:5432'
+
+  api:
+    build:
+      context: ./BE
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./BE/.env.example
+    depends_on:
+      - db
+    ports:
+      - '5001:5000'
+
+  web:
+    build:
+      context: ./FE
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - VITE_API_URL=http://localhost:5001/api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+
+volumes:
+  db_data:

@@ -1,0 +1,2649 @@
+@font-face {
+  font-family: 'iCielBC Lodestone';
+  src: url('/fonts/iCielBC Lodestone/iCielBC Lodestone.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --toor-cream: #fffef2;
+  --toor-red: #da2128;
+  --toor-red-hover: #c41e25;
+  --toor-ink: #1f2937;
+  --toor-yellow: #f1bf43;
+  --toor-blue: #3c9cd7;
+  --toor-muted: rgba(31, 41, 55, 0.68);
+  --toor-border: rgba(31, 41, 55, 0.14);
+  --toor-border-soft: rgba(31, 41, 55, 0.1);
+  color-scheme: light;
+  --quicksand-font-size: 1.3rem;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  background: var(--toor-cream);
+  color: var(--toor-ink);
+}
+
+/* Lenis: tránh xung đột với CSS scroll-behavior khi đang smooth */
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: var(--quicksand-font-size);
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+#root {
+  height: fit-content;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.25rem clamp(1.25rem, 3.5vw, 3rem);
+  min-height: 7.75rem;
+  color: var(--toor-cream);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header.is-scrolled {
+  min-height: 5.75rem;
+  padding: 0.75rem clamp(1.25rem, 3.5vw, 2.75rem);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(255, 254, 242, 0.92);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header.is-scrolled .brand-logo {
+  height: clamp(3.42rem, 2.81vw + 2.33rem, 4.35rem);
+  max-width: min(281px, 90vw);
+}
+
+.header--home:not(.is-scrolled) {
+  background: transparent;
+}
+
+.header-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.brand {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--toor-cream);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 0;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.brand-logo {
+  display: block;
+  height: clamp(4.2rem, 5.25vw + 2.81rem, 5.93rem);
+  width: auto;
+  max-width: min(375px, 90vw);
+  min-width: 0;
+  object-fit: contain;
+  object-position: top center;
+  transition: filter 0.35s ease, height 0.3s ease, max-width 0.3s ease;
+}
+
+/* Trang chủ: chưa scroll logo kem (gần --toor-cream), sau khi scroll logo đỏ (--toor-red) */
+.header--home:not(.is-scrolled) .brand-logo {
+  filter: none;
+}
+
+.header--home.is-scrolled .brand-logo {
+  filter: none;
+}
+
+/* Trang chủ: sau scroll bỏ thanh full-width; menu gói trong pill */
+.header--home.is-scrolled {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.header--home.is-scrolled .header-nav {
+  flex: 0 1 auto;
+  max-width: min(100%, calc(100vw - 10rem));
+  margin-left: auto;
+  padding: 0.35rem 0.55rem;
+  background: var(--toor-cream);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 9999px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.header--home.is-scrolled .nav-links {
+  margin-right: 0;
+  gap: 0.1rem 0.25rem;
+}
+
+.header--home.is-scrolled .nav-links a {
+  padding: 0.4rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.header--home.is-scrolled .nav-links a:not(:last-child)::after {
+  display: none;
+}
+
+.header--home.is-scrolled .nav-links a:hover:not(.active),
+.header--home.is-scrolled .nav-links a:focus-visible:not(.active) {
+  opacity: 1;
+  color: var(--toor-blue) !important;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.header--home.is-scrolled 
+
+.header--home.is-scrolled .nav-links a.active:hover,
+.header--home.is-scrolled .nav-links a.active:focus-visible {
+  background: var(--toor-red-hover);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-right: clamp(0.75rem, 4vw, 3.25rem);
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: var(--toor-cream);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  /* TĂNG KÍCH THƯỚC CHỮ MENU */
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.nav-links a:not(:last-child)::after {
+  content: "|";
+  margin-left: 1rem;
+  color: currentColor;
+  opacity: 0.3;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.nav-links a:hover:not(.active) {
+  opacity: 1;
+  color: #000 !important;
+}
+
+
+
+.nav-links a.active:hover,
+.nav-links a.active:focus-visible {
+  background: var(--toor-red-hover);
+}
+
+.page-content {
+  flex: 1;
+  padding: 8.25rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.home-main {
+  flex: 1;
+  width: 100%;
+  padding: 0;
+  max-width: none;
+}
+
+/* Home hero: artwork background + headline overlay */
+.home-hero {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--toor-red);
+  background-image: url('/images/7.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Căn theo ~1/3 chiều cao hero; tối thiểu dưới header fixed (logo lớn) */
+.home-hero__inner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: max(7.5rem, 33.333%);
+  width: 100%;
+  max-width: 72rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-hero__inner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: max(7.5rem, 33.333%);
+  width: 100%;
+  max-width: 72rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: var(--toor-ink);
+}
+
+.home-hero__title {
+  margin: 0;
+  color: var(--toor-cream);
+  font-family: 'iCielBC Lodestone', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.25rem, 3.2vw + 0.35rem, 3.75rem);
+}
+
+.home-hero__line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* TOORStory — dưới hero */
+.toor-story {
+  background: var(--toor-cream);
+  color: var(--toor-ink);
+  overflow-x: clip;
+}
+
+.toor-story__inner {
+  display: grid;
+  grid-template-columns: minmax(0, min(34rem, 100% - 2rem)) 1fr;
+  align-items: start;
+  gap: clamp(0.85rem, 2.35vw, 1.85rem);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(1.5rem, 3.65vw, 3.15rem) 0 clamp(1.5rem, 3.65vw, 3.15rem) max(1.25rem, calc((100vw - 75rem) / 2 + 1.25rem));
+}
+
+.toor-story__copy {
+  padding-right: 0.5rem;
+}
+
+.toor-story__title {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  color: var(--toor-red);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  line-height: 1.15;
+  margin: 0 0 0.65rem;
+}
+
+.toor-story__rule {
+  width: 100%;
+  height: 2px;
+  background: var(--toor-red);
+  margin-bottom: 1.5rem;
+}
+
+.toor-story__copy p {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.85;
+  margin: 0 0 1.1rem;
+}
+
+.toor-story__copy p:last-child {
+  margin-bottom: 0;
+}
+
+.toor-story__visual {
+  --toor-story-img-h: clamp(17.25rem, 29vw, 26.5rem);
+  width: 100%;
+  min-height: var(--toor-story-img-h);
+  align-self: stretch;
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+}
+
+.toor-story__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: var(--toor-story-img-h);
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+  transform-origin: center center;
+}
+
+@media (max-width: 900px) {
+  .toor-story__inner {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    padding: 1.65rem clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .toor-story__copy {
+    padding-right: 0;
+  }
+
+  .toor-story__visual {
+    --toor-story-img-h: clamp(9.25rem, 37vw, 14.5rem);
+    border-radius: 9999px;
+    max-width: min(100%, 36rem);
+    margin-inline: auto;
+  }
+
+  .toor-story__visual img {
+    min-height: var(--toor-story-img-h);
+  }
+}
+
+/* 5 vị lẩu quốc tế — band trắng/đỏ 50%, vòng cắt đôi, mascot sau lớp đỏ */
+.intl-broths {
+  --intl-broths-red: var(--toor-red);
+  --intl-thumb-d: clamp(6.25rem, 13vw, 9.25rem);
+  /* Kéo mép trên nền đỏ lên ~1/2 đường kính vòng để cắt đúng nửa ảnh sản phẩm */
+  --intl-red-lift: calc(var(--intl-thumb-d) * 0.16);
+  /* Dịch mascot sang trái (px + vw) — không phụ thuộc max(0.25rem, calc âm) trên màn hẹp */
+  --intl-mascot-shift-x: calc(-40px - 4vw);
+  position: relative;
+  overflow-x: visible;
+  overflow-y: visible;
+  background: var(--toor-cream);
+}
+
+.intl-broths__stage {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Tiêu đề tách hẳn khỏi hàng vòng — không chồng lên ảnh */
+.intl-broths__head {
+  position: relative;
+  z-index: 5;
+  flex: 0 0 auto;
+  padding-top: clamp(1.15rem, 2.8vw, 1.85rem);
+  padding-inline: max(1.25rem, calc((100vw - 75rem) / 2 + 1.25rem));
+  padding-bottom: clamp(1.35rem, 3.75vw, 2.65rem);
+  max-width: min(100% - 13rem, 38rem);
+}
+
+.intl-broths__heading {
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.35rem 0.55rem;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  text-transform: uppercase;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.intl-broths__num {
+  font-size: clamp(2.65rem, 7vw, 4.85rem);
+  color: var(--intl-broths-red);
+  letter-spacing: 0.02em;
+  line-height: 0.88;
+  flex-shrink: 0;
+}
+
+/* Cùng cỡ .toor-story__title */
+.intl-broths__title-text {
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: var(--intl-broths-red);
+}
+
+/* Khối sản phẩm + nền chia đôi */
+.intl-broths__band {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 auto;
+  min-height: calc(var(--intl-thumb-d) + clamp(2.1rem, 4.2vw, 2.85rem));
+  margin-inline: 0;
+  overflow: visible;
+}
+
+.intl-broths__band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--toor-cream);
+}
+
+.intl-broths__band::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - var(--intl-red-lift));
+  bottom: 0;
+  z-index: 2;
+  background: var(--intl-broths-red);
+}
+
+/* Wrapper: neo phải + dịch trái rõ (màn hẹp: max(0.25rem, âm) khiến right gần như cố định) */
+.intl-broths__mascot-wrap {
+  position: absolute;
+  z-index: 1;
+  top: clamp(-7.5rem, -16vw, -3.25rem);
+  right: max(1.25rem, 6vw, calc((100vw - 75rem) / 2 + 1.25rem));
+  width: min(46vw, 23rem);
+  max-width: 460px;
+  pointer-events: none;
+  transform: translateX(var(--intl-mascot-shift-x)) translateY(70px);
+  transform-origin: right top;
+}
+
+/* Ảnh: chỉ scale + dọc; translate ngang nằm ở wrap */
+.intl-broths__mascots {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: right 35%;
+  transform: translateY(clamp(-4.5rem, -9vw, -2.25rem)) scale(1.2);
+  transform-origin: right top;
+}
+
+.intl-broths__bottom {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: inherit;
+  padding: 0 max(1.25rem, calc((100vw - 75rem) / 2 + 1.25rem)) clamp(0.65rem, 1.8vw, 1.05rem);
+  background: transparent;
+}
+
+.intl-broths__list {
+  position: relative;
+  z-index: 4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 72rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.55rem, 1.75vw, 1.2rem);
+  /* Ít kéo lên: mép đỏ đã nâng theo đường kính vòng */
+  transform: translateY(calc(var(--intl-thumb-d) * -0.02));
+}
+
+.intl-broths__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.45rem;
+}
+
+.intl-broths__thumb {
+  width: var(--intl-thumb-d);
+  max-width: 100%;
+  margin-top: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0;
+  outline: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  background: var(--toor-ink);
+  flex-shrink: 0;
+}
+
+.intl-broths__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+  transform-origin: center;
+}
+
+.intl-broths__label {
+  margin: 0;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.3;
+  color: var(--toor-cream);
+  text-wrap: balance;
+}
+
+/* Đoạn mô tả — dưới vùng đỏ (sau band) */
+.intl-broths__copy {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(1.35rem, 3.25vw, 2.25rem) max(1.25rem, calc((100vw - 75rem) / 2 + 1.25rem)) clamp(1.5rem, 3.5vw, 2.75rem);
+  background: var(--toor-cream);
+  color: var(--toor-ink);
+}
+
+.intl-broths__copy p {
+  margin: 0 0 1.05rem;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.85;
+  text-align: left;
+}
+
+.intl-broths__copy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .intl-broths {
+    --intl-red-lift: calc(var(--intl-thumb-d) * 0.4);
+    --intl-mascot-shift-x: calc(-24px - 3vw);
+  }
+
+  .intl-broths__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    transform: translateY(calc(var(--intl-thumb-d) * -0.02));
+  }
+
+  .intl-broths__mascot-wrap {
+    width: min(40vw, 12.5rem);
+    top: clamp(-6.25rem, -18vw, -2.75rem);
+    transform: translateX(var(--intl-mascot-shift-x)) translateY(20px);
+  }
+
+  .intl-broths__mascots {
+    object-position: right 38%;
+    transform: translateY(clamp(-3.75rem, -10vw, -2rem)) scale(1.2);
+  }
+
+  .intl-broths__head {
+    max-width: min(100% - 9rem, 100%);
+  }
+}
+
+@media (max-width: 560px) {
+  .intl-broths__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intl-broths__head {
+    max-width: 100%;
+  }
+
+  .intl-broths__heading {
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}
+
+/* Món ăn đặc sắc — lưới 3×2, nền trắng */
+.special-dishes {
+  --special-dishes-red: var(--toor-red);
+  background: var(--toor-cream);
+  padding-top: clamp(1.5rem, 4vw, 2.75rem);
+  padding-bottom: 0;
+  padding-inline: 0;
+}
+
+/* Tiêu đề full-bleed: vạch đỏ kéo tới mép viewport */
+.special-dishes__head {
+  width: 100%;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.special-dishes__head-inner {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: env(safe-area-inset-left, 0) env(safe-area-inset-right, 0);
+  box-sizing: border-box;
+}
+
+.special-dishes__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: max(1.25rem, calc((100vw - 75rem) / 2 + 1.25rem));
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.special-dishes__title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.65rem, 2vw, 1.35rem);
+  font-family: 'iCielBC Lodestone', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  width: 100%;
+}
+
+.special-dishes__title-line {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 3px;
+  background: var(--special-dishes-red);
+  border-radius: 2px;
+}
+
+.special-dishes__title-text {
+  flex: 0 1 auto;
+  text-align: center;
+  font-size: clamp(1.35rem, 2.8vw, 2.1rem);
+  color: var(--special-dishes-red);
+}
+
+.special-dishes__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.special-dishes__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(0.5rem, 1.2vw, 0.75rem);
+}
+
+.special-dishes__frame {
+  width: 100%;
+  border-radius: clamp(0.65rem, 1.5vw, 1rem);
+  overflow: hidden;
+  background: var(--toor-cream);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+  aspect-ratio: 1 / 1;
+}
+
+.special-dishes__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.special-dishes__caption {
+  margin: 0;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.35;
+  color: var(--special-dishes-red);
+  text-wrap: balance;
+  max-width: 16rem;
+}
+
+.special-dishes__foot {
+  width: 100%;
+}
+
+.special-dishes__rule {
+  height: 3px;
+  width: 100%;
+  background: var(--special-dishes-red);
+}
+
+.special-dishes__after-white {
+  width: 100%;
+  min-height: clamp(1.25rem, 4vw, 2.5rem);
+  background: var(--toor-cream);
+}
+
+@media (max-width: 720px) {
+  .special-dishes__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .special-dishes__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Không gian — mirror Toor story: ảnh trái bo phải, nền đỏ, chữ trắng */
+.home-space {
+  --home-space-red: var(--toor-red);
+  background: var(--home-space-red);
+  color: var(--toor-cream);
+  overflow-x: clip;
+}
+
+.home-space__inner {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, min(34rem, 100% - 2rem));
+  align-items: start;
+  gap: clamp(0.85rem, 2.35vw, 1.85rem);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(1.5rem, 3.65vw, 3.15rem) max(1.25rem, calc((100vw - 75rem) / 2 + 1.25rem)) clamp(1.5rem, 3.65vw, 3.15rem) 0;
+}
+
+.home-space__copy {
+  padding-left: 0.5rem;
+  text-align: right;
+}
+
+.home-space__title {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  color: var(--toor-cream);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  line-height: 1.15;
+  margin: 0 0 0.65rem;
+}
+
+.home-space__rule {
+  width: 100%;
+  height: 2px;
+  background: var(--toor-cream);
+  margin-bottom: 1.5rem;
+}
+
+.home-space__copy p {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.85;
+  margin: 0 0 1.1rem;
+  color: var(--toor-cream);
+  letter-spacing: 0;
+}
+
+.home-space__copy p:last-child {
+  margin-bottom: 0;
+}
+
+.home-space__visual {
+  --home-space-img-h: clamp(17.25rem, 29vw, 26.5rem);
+  width: 100%;
+  min-height: var(--home-space-img-h);
+  align-self: stretch;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.home-space__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: var(--home-space-img-h);
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+  transform-origin: center center;
+}
+
+@media (max-width: 900px) {
+  .home-space__inner {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    padding: 1.65rem clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .home-space__copy {
+    padding-left: 0;
+    text-align: left;
+    order: 2;
+  }
+
+  .home-space__visual {
+    order: 1;
+    --home-space-img-h: clamp(9.25rem, 37vw, 14.5rem);
+    border-radius: 9999px;
+    max-width: min(100%, 36rem);
+    margin-inline: auto;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  .home-space__visual img {
+    min-height: var(--home-space-img-h);
+  }
+}
+
+.header--home .nav-links a {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0.9rem 0.85rem;
+    min-height: 6.5rem;
+    gap: 0.75rem;
+  }
+
+  .header.is-scrolled {
+    min-height: 5.25rem;
+    padding: 0.6rem 0.85rem;
+  }
+
+  .header.is-scrolled .brand-logo {
+    height: clamp(2.9rem, 6.56vw + 1.65rem, 3.6rem);
+    max-width: min(206px, 90vw);
+  }
+
+  .brand-logo {
+    height: clamp(3.41rem, 7.5vw + 2.1rem, 4.54rem);
+    max-width: min(263px, 90vw);
+  }
+
+  .header--home.is-scrolled .header-nav {
+    max-width: calc(100vw - 5.5rem);
+    padding: 0.28rem 0.42rem;
+  }
+
+  .header--home.is-scrolled .nav-links a {
+    padding: 0.32rem 0.48rem;
+  }
+
+  .nav-links {
+    margin-right: 0.35rem;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .header--home .nav-links {
+    gap: 0.35rem 0.5rem;
+  }
+
+  .nav-links a:not(:last-child)::after {
+    margin-left: 0.5rem;
+  }
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1,
+.page-section h1 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: clamp(2rem, 2.4vw, 3rem);
+  margin: 0;
+  color: var(--toor-red);
+}
+
+.page-section {
+  background: var(--toor-cream);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.hero-section {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.hero-copy {
+  max-width: 700px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  color: var(--toor-red);
+  font-weight: 700;
+}
+
+.hero-copy p {
+  line-height: 1.8;
+  color: var(--toor-muted);
+}
+
+.hero-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.hero-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--toor-cream);
+  border: 1px solid var(--toor-border);
+  font-weight: 700;
+}
+
+/* --- Promotions (above footer) --- */
+.promo {
+  background: var(--toor-cream);
+  padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1rem, 3vw, 1.5rem) clamp(2.25rem, 5vw, 3rem);
+}
+
+.promo__inner {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  background: var(--toor-cream);
+}
+
+.promo__title {
+  margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
+  text-align: center;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--toor-red);
+}
+
+.promo__slider {
+  background: var(--toor-cream);
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.promo__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(0.35rem, 1.5vw, 0.85rem);
+  padding: clamp(0.75rem, 2vw, 1.15rem) clamp(0.5rem, 1.5vw, 1rem);
+  background: var(--toor-cream);
+}
+
+.promo__arrow {
+  flex-shrink: 0;
+  width: clamp(2.5rem, 5vw, 3.25rem);
+  height: clamp(2.5rem, 5vw, 3.25rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--toor-red);
+  font-size: clamp(1.15rem, 2.6vw + 0.2rem, 1.6rem);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.promo__arrow:hover,
+.promo__arrow:focus-visible {
+  color: var(--toor-red);
+  opacity: 0.92;
+  outline: none;
+}
+
+.promo__stage {
+  flex: 1;
+  min-width: 0;
+}
+
+.promo__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  align-items: start;
+  animation: promo-pair-in 0.35s ease;
+}
+
+@keyframes promo-pair-in {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.promo__card {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  border-radius: clamp(1rem, 0.65rem + 1.2vw, 1.35rem);
+  overflow: hidden;
+  background: var(--toor-cream);
+  border: 1px solid var(--toor-red);
+  box-shadow: none;
+}
+
+.promo__card+.promo__card {
+  z-index: 2;
+}
+
+.promo__img {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+}
+
+.promo__card+.promo__card .promo__img {
+  z-index: 2;
+}
+
+.promo__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem 0.85rem;
+  background: var(--toor-cream);
+}
+
+.promo__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.promo__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(218, 33, 40, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.promo__dot:hover,
+.promo__dot:focus-visible {
+  background: rgba(218, 33, 40, 0.65);
+  outline: none;
+}
+
+.promo__dot--active {
+  background: var(--toor-red);
+  transform: scale(1.15);
+}
+
+@media (max-width: 420px) {
+  .promo__pair {
+    gap: 0.35rem;
+  }
+
+  .promo__arrow {
+    width: 2.125rem;
+    height: 2.125rem;
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+  }
+}
+
+.footer-wrap {
+  position: relative;
+  margin-top: auto;
+}
+
+.footer__decor-top {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 3.5vw, 3rem);
+}
+
+.footer__noodle-full {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: none;
+  height: auto;
+  opacity: 1;
+  z-index: 0;
+  padding-top: 20px;
+  pointer-events: none;
+}
+
+.footer__mascot {
+  display: block;
+  height: clamp(7rem, 14vw, 11rem);
+  width: auto;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -2px;
+  top: 21.5px;
+  transform: scale(1.5625);
+}
+
+.footer {
+  background: var(--toor-red);
+  color: rgba(255, 254, 242, 0.92);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3.5vw, 3rem);
+  margin-top: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 254, 242, 0.12);
+  position: relative;
+  overflow: visible;
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.footer__grid {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.75fr) minmax(0, 1fr);
+  align-items: start;
+  text-align: left;
+}
+
+.footer__col--brand {
+  max-width: 22rem;
+}
+
+.footer__brand-link {
+  display: inline-block;
+  line-height: 0;
+  margin-bottom: 1rem;
+}
+
+.footer__brand-link:hover .footer__logo,
+.footer__brand-link:focus-visible .footer__logo {
+  opacity: 0.92;
+}
+
+.footer__logo {
+  display: block;
+  height: clamp(4.2rem, 5.25vw + 2.81rem, 5.93rem);
+  width: auto;
+  max-width: min(375px, 90vw);
+  min-width: 0;
+  object-fit: contain;
+  object-position: left center;
+  transition: opacity 0.2s ease;
+}
+
+.footer__tagline {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.55;
+  color: rgba(255, 254, 242, 0.82);
+  font-size: var(--quicksand-font-size);
+}
+
+.footer__heading {
+  margin: 0 0 0.85rem;
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: clamp(1.05rem, 0.5vw + 0.95rem, 1.2rem);
+  font-weight: 700;
+  color: var(--toor-cream);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.footer__nav-wrap {
+  margin: 0;
+}
+
+.footer__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__link {
+  color: rgba(255, 254, 242, 0.95);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--toor-cream);
+  opacity: 1;
+}
+
+.footer__link.active {
+  color: var(--toor-cream);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
+.footer__link--inline {
+  font-weight: 700;
+}
+
+.footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer__contact-icon {
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  color: var(--toor-cream);
+}
+
+.footer__contact-text {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 700;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.5;
+  color: rgba(255, 254, 242, 0.95);
+}
+
+.footer__contact-text[href] {
+  transition: color 0.2s ease;
+}
+
+.footer__contact-text[href]:hover,
+.footer__contact-text[href]:focus-visible {
+  color: var(--toor-cream);
+}
+
+.footer__contact {
+  margin: 0;
+  font-style: normal;
+  font-size: var(--quicksand-font-size);
+  line-height: 1.55;
+  color: rgba(255, 254, 242, 0.88);
+}
+
+.footer__contact p {
+  margin: 0 0 0.5rem;
+}
+
+.footer__contact p:last-child {
+  margin-bottom: 0;
+}
+
+.footer__social {
+  margin: 1rem 0 0;
+  font-size: var(--quicksand-font-size);
+}
+
+.footer__social-sep {
+  margin: 0 0.35rem;
+  color: rgba(255, 254, 242, 0.45);
+}
+
+.footer__bottom {
+  margin-top: clamp(1.75rem, 3vw, 2.25rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 254, 242, 0.28);
+  text-align: center;
+}
+
+.footer__copyright {
+  margin: 0;
+  font-size: var(--quicksand-font-size);
+  color: rgba(255, 254, 242, 0.72);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__col--brand {
+    max-width: none;
+  }
+
+  .footer__logo {
+    object-position: left center;
+  }
+}
+
+.breadcrumb {
+  color: var(--toor-muted);
+  margin-bottom: 1rem;
+}
+
+.menu-layout,
+.booking-layout,
+.contact-layout {
+  display: grid;
+  gap: 1.5rem;
+  padding: 25px;
+  color: var(--toor-ink);
+}
+
+.menu-layout {
+  grid-template-columns: 260px 1fr;
+}
+
+.menu-sidebar {
+  background: var(--toor-cream);
+  border: 1px solid var(--toor-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.menu-sidebar h2 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  margin-top: 0;
+}
+
+.menu-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-sidebar li {
+  margin: 0.75rem 0;
+  font-weight: 700;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.menu-group h2 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  margin: 0 0 1rem;
+}
+
+.menu-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.menu-card {
+  border: 1px solid var(--toor-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--toor-cream);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  margin: 0 0 0.5rem;
+}
+
+.card-content p {
+  margin: 0;
+  color: var(--toor-muted);
+}
+
+.price {
+  margin-top: 1rem;
+  font-size: var(--quicksand-font-size);
+  font-weight: 700;
+  color: var(--toor-red);
+}
+
+.small-text {
+  color: var(--toor-muted);
+}
+
+.booking-section {
+  padding: 0;
+}
+
+.booking-layout {
+  grid-template-columns: 320px 1fr;
+}
+
+.booking-sidebar,
+.booking-panel,
+.contact-map,
+.contact-info {
+  border-radius: 1rem;
+  background: var(--toor-cream);
+  border: 1px solid var(--toor-border);
+  padding: 1.5rem;
+}
+
+.restaurant-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.restaurant-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--toor-cream);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.restaurant-card:hover,
+.restaurant-card.active {
+  border: 1px solid var(--toor-red);
+  transform: translateY(-1px);
+}
+
+.restaurant-card h3 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  margin: 0 0 0.35rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.button {
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-decoration: none;
+  color: var(--toor-cream);
+}
+
+.button-primary {
+  background: var(--toor-red);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--toor-red-hover);
+}
+
+.button-secondary {
+  background: var(--toor-ink);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  opacity: 0.92;
+}
+
+.booking-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.restaurant-detail {
+  background: var(--toor-cream);
+  border: 1px solid var(--toor-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.booking-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--toor-border);
+  background: var(--toor-cream);
+  font: inherit;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: 700;
+}
+
+.message.loading {
+  background: var(--toor-cream);
+  color: var(--toor-ink);
+  border: 1px solid var(--toor-border);
+}
+
+.message.success {
+  background: var(--toor-cream);
+  color: var(--toor-red);
+  border: 1px solid rgba(218, 33, 40, 0.35);
+}
+
+.message.error {
+  background: rgba(218, 33, 40, 0.1);
+  color: var(--toor-red);
+  border: 1px solid rgba(218, 33, 40, 0.35);
+}
+
+.contact-layout {
+  grid-template-columns: 1fr;
+}
+
+.contact-map iframe {
+  width: 100%;
+  min-height: 360px;
+  border: 0;
+  border-radius: 1rem;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin: 0.75rem 0;
+}
+
+.contact-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-cards div {
+  background: var(--toor-cream);
+  border: 1px solid var(--toor-border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+/* Update menu-sidebar */
+.menu-sidebar .category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-sidebar .category-item {
+  margin: 0.5rem 0;
+}
+
+.menu-sidebar .category-title {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: block;
+}
+
+.menu-sidebar .category-title:hover {
+  color: #000;
+}
+
+
+
+.menu-sidebar .subcategory-list {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.menu-sidebar .subcategory-item {
+  color: var(--toor-red);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem 0;
+  border-radius: 4px;
+}
+
+.menu-sidebar .subcategory-item:hover {
+  color: #000;
+}
+
+
+
+/* Update menu-cards for specific sizes */
+
+
+.menu-item-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.1);
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+
+  .header,
+  .page-content,
+  .footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .menu-layout,
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Booking Page Hero (Style matched to HomeHero) --- */
+.booking-page-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-input-group:last-of-type {
+  border-right: none;
+  /* Ô cuối không có vách ngăn */
+}
+
+.booking-input-group:last-of-type {
+  border-right: none;
+  /* Ô cuối không có vách ngăn */
+}
+
+
+
+
+
+
+
+
+.booking-glass-form.wide {
+  border-radius: 2rem;
+  flex-direction: column;
+  padding: 2.5rem;
+  max-width: 1000px;
+}
+
+
+
+
+
+
+
+
+
+.booking-input-group input[type='number'] {
+  width: 60px;
+}
+
+
+
+.booking-hero-btn:hover:not(:disabled) {
+  background: var(--toor-red-hover);
+  transform: scale(1.05);
+}
+
+.booking-hero-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.step-label {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.branch-selection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.branch-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.branch-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.branch-item.active {
+  border-color: var(--toor-red);
+  background: rgba(218, 33, 40, 0.15);
+}
+
+.branch-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.branch-info strong {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.branch-info span {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.step-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-back {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 100px;
+  padding: 1.25rem 3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.confirmation-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.summary-section {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.summary-section p {
+  margin: 0.5rem 0;
+}
+
+.success-icon-large {
+  font-size: 4rem;
+  color: #4ade80;
+  margin-bottom: 1rem;
+}
+
+.success-msg {
+  text-align: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+.booking-input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  padding-right: 1.5rem;
+}
+
+.booking-input-group label {
+  color: #333 !important;
+  font-size: 0.8rem !important;
+  margin-bottom: 5px !important;
+}
+
+.booking-input-group input {
+  color: #da2128 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+}
+
+
+
+
+
+
+
+
+
+.booking-bar-item:last-child {
+  border-right: none;
+}
+
+.booking-bar-item label {
+  font-size: 1.1rem;
+  color: #666;
+  white-space: nowrap;
+  font-weight: 700;
+  margin: 0;
+}
+
+
+
+.input-with-icon input {
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 900;
+  width: 120px;
+  outline: none;
+  padding: 0;
+}
+
+.input-with-icon input[name='guest_count'] {
+  width: 60px;
+}
+
+/* Giả lập Icon Chevron */
+
+
+/* Giả lập Icon Calendar */
+
+
+.icon-calendar::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  width: 2px;
+  height: 4px;
+  background: #666;
+}
+
+.icon-calendar::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: 2px;
+  width: 2px;
+  height: 4px;
+  background: #666;
+}
+
+
+
+.booking-bar-submit:hover {
+  background: #c41e25;
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+.booking-bar-item:last-child {
+  border-right: none;
+}
+
+.booking-bar-item label {
+  font-size: 1.1rem !important;
+  /* Font to */
+  color: #666;
+  white-space: nowrap;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'iCielBC Lodestone', sans-serif;
+}
+
+
+
+.input-with-icon input {
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 1.3rem !important;
+  /* Font to */
+  font-weight: 900;
+  width: 120px;
+  outline: none;
+  padding: 0;
+  font-family: 'iCielBC Lodestone', sans-serif;
+}
+
+.input-with-icon input[name='guest_count'] {
+  width: 60px;
+}
+
+
+
+
+.icon-calendar::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 3px;
+  width: 2px;
+  height: 5px;
+  background: #666;
+}
+
+.icon-calendar::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: 3px;
+  width: 2px;
+  height: 5px;
+  background: #666;
+}
+
+
+
+.booking-bar-submit:hover {
+  background: #c41e25;
+  transform: translateY(-2px);
+}
+
+.input-with-icon select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 1.3rem !important;
+  font-weight: 900;
+  width: 120px;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'iCielBC Lodestone', sans-serif;
+}
+
+.input-with-icon select[name='guest_count'] {
+  width: 60px;
+}
+
+/* Vô hiệu hóa tương tác chuột của icon để click xuyên qua vào select */
+.icon-chevron,
+
+
+
+/* --- Tùy chỉnh Step 1 Form Đặt Bàn (Chuẩn theo Design) --- */
+
+/* Khối bo tròn màu trắng bọc ngoài cùng */
+
+
+/* Nhóm các input được bọc viền đỏ */
+
+
+/* Từng cột input */
+
+
+/* Xóa vạch chia ở ô cuối cùng */
+.bf-input-col:last-child {
+  border-right: none;
+}
+
+/* Chữ nhãn (Số người:, Ngày:) */
+
+
+/* Thẻ input & select */
+
+
+/* FIX LỖI ICON SELECT: Ẩn icon mặc định & thêm mũi tên xịn. Do thêm bằng background-image nên bấm vào đâu cũng mở được dropdown */
+
+
+/* Định dạng mượt hơn cho icon lịch của input date */
+
+
+
+/* Nút bấm (nằm trong mảng trắng) */
+
+
+.bf-submit-btn:hover {
+  background: #a1171d;
+  transform: translateY(-1px);
+}
+
+/* Đáp ứng giao diện di động */
+@media (max-width: 800px) {
+
+
+
+  .bf-input-col:last-child {
+    border-bottom: none;
+  }
+
+}
+
+.booking-hero-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 570px;
+  z-index: 10;
+}
+
+/* --- Tùy chỉnh Step 1 Form Đặt Bàn (Chuẩn theo Design) --- */
+
+.booking-form-step1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 3rem;
+  padding: 1.5rem 2.5rem;
+  gap: 2rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  width: 95%;
+  max-width: 1100px;
+
+}
+
+.bf-inputs-group {
+  display: flex;
+  flex: 1;
+  border: 1px solid #c41e25;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.bf-input-col {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 1.1rem 1.8rem;
+  border-right: 1px solid #c41e25;
+  background: transparent;
+}
+
+.bf-input-col:last-child {
+  border-right: none;
+}
+
+.bf-label {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 600;
+  color: #666;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+.bf-select,
+.bf-date {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.bf-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 1.1em;
+  padding-right: 1.5em;
+}
+
+.bf-submit-btn {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  background: #c41e25;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1.1rem 3rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.bf-submit-btn:hover {
+  background: #a1171d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(196, 30, 37, 0.3);
+}
+
+/* --- Khu vực kết quả đặt bàn --- */
+.booking-results-area {
+  background: var(--toor-cream);
+  min-height: 0;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  opacity: 0;
+}
+
+.booking-results-area.is-visible {
+  min-height: 60vh;
+  padding: 5rem 0;
+  opacity: 1;
+}
+
+.results-title {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  color: var(--toor-red);
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.branch-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.branch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--toor-red);
+}
+
+.branch-card.active {
+  background: #fffafa;
+  border: 2px solid var(--toor-red);
+}
+
+.branch-card-info h3 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  color: var(--toor-ink);
+}
+
+.branch-card-info .address {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.branch-card-info .hours {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--toor-red);
+}
+
+.radio-circle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  position: relative;
+}
+
+.branch-card.active .radio-circle {
+  border-color: var(--toor-red);
+  background: var(--toor-red);
+}
+
+.branch-card.active .radio-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* --- Xác nhận thông tin --- */
+.booking-confirmation-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+}
+
+.confirmation-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.success-check {
+  width: 60px;
+  height: 60px;
+  background: #4ade80;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1.5rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--toor-cream);
+  border-radius: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary-item label {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.summary-item span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--toor-ink);
+}
+
+.summary-item span.highlight {
+  color: var(--toor-red);
+}
+
+.btn-primary {
+  background: var(--toor-red);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Buffet Gallery Styles --- */
+.buffet-gallery {
+  padding-top: 0;
+  /* GIẢM PADDING ĐỂ NHÍCH LÊN */
+  text-align: center;
+  padding: 1rem;
+}
+
+.gallery-container {
+  margin-top: 0.5rem;
+  /* GIẢM MARGIN ĐỂ NHÍCH LÊN */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.image-frame {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  padding: 10px;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.image-frame img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  display: block;
+}
+
+.page-indicator {
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--toor-red);
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: 1.1rem;
+}
+
+.nav-btn {
+  background: var(--toor-red);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(196, 30, 37, 0.3);
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #a1171d;
+  transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .gallery-container {
+    margin-top: 0.5rem;
+    /* GIẢM MARGIN ĐỂ NHÍCH LÊN */
+    gap: 1rem;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+.menu-grid-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* MỞ RỘNG CHIỀU RỘNG Ô */
+  gap: 2.5rem;
+  /* TĂNG KHOẢNG CÁCH GIỮA CÁC Ô */
+  padding: 1rem 0;
+}
+
+.menu-item-box {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.menu-item-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.menu-item-name {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.menu-item-name h3 {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--toor-ink);
+  line-height: 1.4;
+}
+
+.menu-item-name .price {
+  font-family: 'iCielBC Lodestone', sans-serif;
+  font-weight: 800;
+  color: var(--toor-red);
+  font-size: 1.1rem;
+}
+
+
+/* --- Style Active cho Menu chính --- */
+.nav-links a.active {
+  color: var(--toor-cream) !important;
+  background: var(--toor-red) !important;
+  border-radius: 9999px;
+  padding: 0.4rem 1rem !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+}
+
+.nav-links a.active:hover {
+  background: var(--toor-red-hover) !important;
+}
+
+/* Ẩn vạch chia | khi mục đó đang active */
+.nav-links a.active::after {
+  display: none !important;
+}
+
+/* --- Fix màu Menu Sidebar khi Active --- */
+.menu-sidebar .category-title.active {
+  color: var(--toor-red) !important;
+  background: rgba(218, 33, 40, 0.05);
+}
+
+.menu-sidebar .subcategory-item.active {
+  color: var(--toor-red) !important;
+  font-weight: 800 !important;
+  background: rgba(218, 33, 40, 0.08);
+  border-left: 3px solid var(--toor-red);
+  padding-left: 0.8rem;
+}
