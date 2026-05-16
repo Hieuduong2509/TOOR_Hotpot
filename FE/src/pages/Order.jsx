@@ -33,7 +33,32 @@ const staticMenuItems = [
   { id: 20, name: 'Bắp Heo Mỹ Cuộn', price: 159000, category: 'Heo Cừu', image_url: 'b_p_heo_my_cu_n.jpg' },
   { id: 21, name: 'Ba Chỉ Cừu Non', price: 199000, category: 'Heo Cừu', image_url: 'bachicuu.jpg' },
   { id: 22, name: 'Má Heo Tươi', price: 129000, category: 'Heo Cừu', image_url: 'm_heo.png' },
-  { id: 23, name: 'Sườn Heo Cay', price: 179000, category: 'Heo Cừu', image_url: 'mw_suon_heo_cay_1__1.jpg' }
+  { id: 23, name: 'Sườn Heo Cay', price: 179000, category: 'Heo Cừu', image_url: 'mw_suon_heo_cay_1__1.jpg' },
+
+  // Combo / Khác (Ví dụ)
+  { id: 24, name: 'Combo Ngũ Hành', price: 899000, category: 'Bò', image_url: 'co_combo_son_nguu_ngu_hanh.jpg' },
+  { id: 25, name: 'Dẻ Sườn Bò Thái Tay', price: 319000, category: 'Bò', image_url: 'd_s_n_p_m_th_i_tay.jpg' },
+  { id: 26, name: 'Bạch Tuộc Baby', price: 129000, category: 'Hải Sản', image_url: '60001591-bach-tuoc-baby_1_1.jpg' },
+  { id: 27, name: 'Tôm Sú Tươi', price: 149000, category: 'Hải Sản', image_url: 'tom_su_tuoi.jpg' },
+  { id: 28, name: 'Cá Tầm', price: 179000, category: 'Hải Sản', image_url: '60017198-ca-tam.jpg.png' },
+  { id: 29, name: 'Cá Hồi', price: 189000, category: 'Hải Sản', image_url: 'ca-hoi_1_1.jpg' },
+  { id: 30, name: 'Mực Trứng', price: 139000, category: 'Hải Sản', image_url: '60009427-myc-trung_2_1.jpg' },
+  { id: 31, name: 'Tôm Thẻ Alc', price: 149000, category: 'Hải Sản', image_url: '32664-tom-the-alc.jpg' },
+  { id: 32, name: 'Mực Nút', price: 129000, category: 'Hải Sản', image_url: '2900_muc_nut_2.jpg' },
+  { id: 33, name: 'Rau Múc Tươi', price: 59000, category: 'Rau Nấm', image_url: 'rau_muc_tuoi.jpg' },
+  { id: 34, name: 'Tuyết Liên Hoa', price: 69000, category: 'Rau Nấm', image_url: 'tuyet-lien-hoa.jpg' },
+  { id: 35, name: 'Váng Xanh', price: 45000, category: 'Rau Nấm', image_url: 'v_m_xanh.jpg' },
+  { id: 36, name: 'Bò Viên Mỹ', price: 89000, category: 'Viên Thả Lẩu', image_url: 'th_t_b_v_n_m_y.jpg' },
+  { id: 37, name: 'Gầu Bò Mỹ', price: 179000, category: 'Bò', image_url: 'g_u_bo_my_.jpg' },
+  { id: 38, name: 'Sườn Bò Hoàng Kim', price: 259000, category: 'Bò', image_url: 'suon-bo-hoang-kim_2.jpg' },
+  { id: 39, name: 'Nước Suối', price: 15000, category: 'Đồ Uống', image_url: '70000929_nuoc_khoang_bonita_1.jpg' },
+  { id: 40, name: 'Soju Nho', price: 25000, category: 'Đồ Uống', image_url: '70000874_ruou_him_soju_nho_360ml__chai_1.jpg' },
+  { id: 41, name: 'Nước Ép Trái Cây', price: 45000, category: 'Đồ Uống', image_url: 'co_mw_haruka_crystal.jpg' },
+  { id: 42, name: 'Dưa Hấu Kim Tác', price: 18000, category: 'Đồ Uống', image_url: 'nuoc-dua-hau-kim-tac.jpg' },
+  { id: 43, name: 'Soju Dưa Hấu', price: 39000, category: 'Đồ Uống', image_url: 'soju-him-duahau.jpg' },
+  { id: 44, name: 'Trà Sữa Trân Châu', price: 49000, category: 'Đồ Uống', image_url: 'co_mw_tra_sua_tran_chau.jpg' },
+  { id: 45, name: 'Soju Vải', price: 55000, category: 'Đồ Uống', image_url: 'soju-him-vai.jpg' },
+  { id: 46, name: 'Coke Zero', price: 55000, category: 'Đồ Uống', image_url: 'co_mw_coke_zero_320ml.jpg' }
 ];
 
 const Order = () => {
@@ -169,7 +194,7 @@ const Order = () => {
               className="button button-primary"
               onClick={() => setStep(2)}
               disabled={selectedBroths.length === 0}
-              style={{ fontFamily: 'iCielBC Lodestone', textTransform: 'uppercase', letterSpacing: '1px' }}
+              style={{ fontFamily: 'quicksand', textTransform: 'uppercase', letterSpacing: '1px' }}
             >
               Tiếp tục chọn món ăn kèm &gt;
             </button>
@@ -181,7 +206,7 @@ const Order = () => {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h2>Bước 2: Chọn Đồ Ăn Kèm</h2>
-            <button style={{ fontFamily: 'iCielBC Lodestone', textTransform: 'uppercase', letterSpacing: '1px' }} className="button button-secondary" onClick={() => setStep(1)}>&lt; Quay lại</button>
+            <button style={{ fontFamily: 'quicksand', textTransform: 'uppercase', letterSpacing: '1px' }} className="button button-secondary" onClick={() => setStep(1)}>&lt; Quay lại</button>
           </div>
           {otherItems.length === 0 && <p>Chưa có đồ ăn kèm trong hệ thống.</p>}
           <div className="menu-grid-new" style={{ marginTop: '20px' }}>
@@ -209,7 +234,7 @@ const Order = () => {
             <button
               className="button button-primary"
               onClick={() => setStep(3)}
-              style={{ fontFamily: 'iCielBC Lodestone', textTransform: 'uppercase', letterSpacing: '1px' }}
+              style={{ fontFamily: 'quicksand', textTransform: 'uppercase', letterSpacing: '1px' }}
             >
               Xem giỏ hàng và Đặt món &gt;
             </button>
@@ -218,44 +243,57 @@ const Order = () => {
       )}
 
       {step === 3 && (
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <h2>Bước 3: Xác nhận đơn hàng</h2>
-          <div style={{ background: 'var(--toor-cream)', border: '1px solid var(--toor-border)', padding: '20px', borderRadius: '10px', marginBottom: '20px' }}>
-            <h3>Thông tin khách hàng</h3>
-            <p><strong>Họ tên:</strong> {user.full_name}</p>
-            <p><strong>Số điện thoại:</strong> {user.phone}</p>
-          </div>
+        <div className="order-confirmation-wrapper">
+          <h2 className="step-title">Bước 3: Xác nhận đơn hàng</h2>
+          
+          <div className="order-summary-card">
+            <div className="summary-section">
+              <h3>Thông tin khách hàng</h3>
+              <div className="info-grid">
+                <div className="info-row">
+                  <span className="info-label">Họ tên:</span>
+                  <span className="info-value">{user.full_name}</span>
+                </div>
+                <div className="info-row">
+                  <span className="info-label">Số điện thoại:</span>
+                  <span className="info-value">{user.phone}</span>
+                </div>
+              </div>
+            </div>
 
-          <div style={{ background: 'var(--toor-cream)' }}>
-            <h3>Chi tiết đơn hàng</h3>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {selectedBroths.map(b => (
-                <li key={b.id} style={{ display: 'flex', justifyContent: 'space-between', margin: '10px 0' }}>
-                  <span>{b.name} (Nước lẩu)</span>
-                  <span>{Number(b.price).toLocaleString('vi-VN')} VNĐ</span>
-                </li>
-              ))}
-              {selectedItems.map(i => (
-                <li key={i.item.id} style={{ display: 'flex', justifyContent: 'space-between', margin: '10px 0' }}>
-                  <span>{i.item.name} x {i.quantity}</span>
-                  <span>{Number(i.item.price * i.quantity).toLocaleString('vi-VN')} VNĐ</span>
-                </li>
-              ))}
-            </ul>
-            <hr style={{ margin: '20px 0', borderTop: '1px dashed var(--toor-border)' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: 'var(--quicksand-font-size)', color: 'var(--toor-red)' }}>
-              <span>Tổng thanh toán:</span>
-              <span>{calculateTotal().toLocaleString('vi-VN')} VNĐ</span>
+            <div className="summary-section">
+              <h3>Chi tiết món đã chọn</h3>
+              <ul className="summary-list">
+                {selectedBroths.map(b => (
+                  <li key={b.id} className="summary-item">
+                    <span className="item-name">{b.name} <small>(Nước lẩu)</small></span>
+                    <span className="item-price">{Number(b.price).toLocaleString('vi-VN')} VNĐ</span>
+                  </li>
+                ))}
+                {selectedItems.map(i => (
+                  <li key={i.item.id} className="summary-item">
+                    <span className="item-name">
+                      {i.item.name} <span className="item-qty">x {i.quantity}</span>
+                    </span>
+                    <span className="item-price">{Number(i.item.price * i.quantity).toLocaleString('vi-VN')} VNĐ</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="total-divider"></div>
+              <div className="total-payment-row">
+                <span>TỔNG THANH TOÁN:</span>
+                <span className="total-amount">{calculateTotal().toLocaleString('vi-VN')} VNĐ</span>
+              </div>
             </div>
           </div>
 
           <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between' }}>
-            <button style={{ fontFamily: 'iCielBC Lodestone', textTransform: 'uppercase', letterSpacing: '1px' }} className="button button-secondary" onClick={() => setStep(2)}>&lt; Quay lại</button>
+            <button style={{ fontFamily: 'quicksand', textTransform: 'uppercase', letterSpacing: '1px' }} className="button button-secondary" onClick={() => setStep(2)}>&lt; Quay lại</button>
             <button
               className="button button-primary"
               onClick={handleCheckout}
               disabled={orderLoading}
-              style={{ fontFamily: 'iCielBC Lodestone', textTransform: 'uppercase', letterSpacing: '1px' }}
+              style={{ fontFamily: 'quicksand', textTransform: 'uppercase', letterSpacing: '1px' }}
             >
               {orderLoading ? 'Đang xử lý...' : 'Xác nhận Đặt Hàng'}
             </button>

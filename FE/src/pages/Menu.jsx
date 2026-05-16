@@ -20,18 +20,24 @@ const buffetImageData = {
     images: [
       'Screenshot 2026-05-16 221621.png',
       'Screenshot 2026-05-16 221632.png',
-      'Screenshot 2026-05-16 221652.png',
-      'Screenshot 2026-05-16 221706.png'
+      'Screenshot 2026-05-16 221652.png'
     ]
   },
   'Menu 349k': {
     folder: 'menu349',
-    images: ['image.png']
+    images: ['image.png',
+      'image copy.png',
+      'image copy 2.png',
+      'image copy 3.png'
+    ]
   },
   'Menu 379': {
     folder: 'menu379',
     images: [
-      'Screenshot 2026-05-16 222114.png'
+      'Screenshot 2026-05-16 222114.png',
+      'image_379_1.png',
+      'image_379_2.png',
+      'image_379_3.png'
     ]
   }
 };
@@ -68,7 +74,29 @@ const staticMenuItems = [
 
   // Combo / Khác (Ví dụ)
   { id: 24, name: 'Combo Ngũ Hành', price: 899000, category: 'Bò', image_url: 'co_combo_son_nguu_ngu_hanh.jpg' },
-  { id: 25, name: 'Dẻ Sườn Bò Thái Tay', price: 319000, category: 'Bò', image_url: 'd_s_n_p_m_th_i_tay.jpg' }
+  { id: 25, name: 'Dẻ Sườn Bò Thái Tay', price: 319000, category: 'Bò', image_url: 'd_s_n_p_m_th_i_tay.jpg' },
+  { id: 26, name: 'Bạch Tuộc Baby', price: 129000, category: 'Hải Sản', image_url: '60001591-bach-tuoc-baby_1_1.jpg' },
+  { id: 27, name: 'Tôm Sú Tươi', price: 149000, category: 'Hải Sản', image_url: 'tom_su_tuoi.jpg' },
+  { id: 28, name: 'Cá Tầm', price: 179000, category: 'Hải Sản', image_url: '60017198-ca-tam.jpg.png' },
+  { id: 29, name: 'Cá Hồi', price: 189000, category: 'Hải Sản', image_url: 'ca-hoi_1_1.jpg' },
+  { id: 30, name: 'Mực Trứng', price: 139000, category: 'Hải Sản', image_url: '60009427-myc-trung_2_1.jpg' },
+  { id: 31, name: 'Tôm Thẻ Alc', price: 149000, category: 'Hải Sản', image_url: '32664-tom-the-alc.jpg' },
+  { id: 32, name: 'Mực Nút', price: 129000, category: 'Hải Sản', image_url: '2900_muc_nut_2.jpg' },
+  { id: 33, name: 'Rau Múc Tươi', price: 59000, category: 'Rau Nấm', image_url: 'rau_muc_tuoi.jpg' },
+  { id: 34, name: 'Tuyết Liên Hoa', price: 69000, category: 'Rau Nấm', image_url: 'tuyet-lien-hoa.jpg' },
+  { id: 35, name: 'Váng Xanh', price: 45000, category: 'Rau Nấm', image_url: 'v_m_xanh.jpg' },
+  { id: 36, name: 'Bò Viên Mỹ', price: 89000, category: 'Viên Thả Lẩu', image_url: 'th_t_b_v_n_m_y.jpg' },
+  { id: 37, name: 'Gầu Bò Mỹ', price: 179000, category: 'Bò', image_url: 'g_u_bo_my_.jpg' },
+  { id: 38, name: 'Sườn Bò Hoàng Kim', price: 259000, category: 'Bò', image_url: 'suon-bo-hoang-kim_2.jpg' }
+  ,
+  { id: 39, name: 'Nước Suối', price: 15000, category: 'Đồ Uống', image_url: '70000929_nuoc_khoang_bonita_1.jpg' },
+  { id: 40, name: 'Soju Nho', price: 25000, category: 'Đồ Uống', image_url: '70000874_ruou_him_soju_nho_360ml__chai_1.jpg' },
+  { id: 41, name: 'Nước Ép Trái Cây', price: 45000, category: 'Đồ Uống', image_url: 'co_mw_haruka_crystal.jpg' },
+  { id: 42, name: 'Dưa Hấu Kim Tác', price: 18000, category: 'Đồ Uống', image_url: 'nuoc-dua-hau-kim-tac.jpg' },
+  { id: 43, name: 'Soju Dưa Hấu', price: 39000, category: 'Đồ Uống', image_url: 'soju-him-duahau.jpg' },
+  { id: 44, name: 'Trà Sữa Trân Châu', price: 49000, category: 'Đồ Uống', image_url: 'co_mw_tra_sua_tran_chau.jpg' },
+  { id: 45, name: 'Soju Vải', price: 55000, category: 'Đồ Uống', image_url: 'soju-him-vai.jpg' },
+  { id: 46, name: 'Coke Zero', price: 55000, category: 'Đồ Uống', image_url: 'co_mw_coke_zero_320ml.jpg' }
 ];
 
 const Menu = () => {

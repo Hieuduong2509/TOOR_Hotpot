@@ -4,7 +4,6 @@ export const siteUrl = trimTrailingSlash(
   import.meta.env.VITE_SITE_URL || 'https://toorhotpot.vn'
 );
 
-/** OG / Twitter — PNG ổn định hơn SVG trên Facebook */
 export const defaultOgImagePath = '/images/pro1.png';
 
 export const absoluteUrl = (path) => {
@@ -14,7 +13,6 @@ export const absoluteUrl = (path) => {
 
 export const defaultOgImageUrl = absoluteUrl(defaultOgImagePath);
 
-/** JSON-LD cho trang chủ — đồng bộ với thông tin thương hiệu trên Footer */
 export function getRestaurantJsonLd() {
   return {
     '@context': 'https://schema.org',

@@ -26,15 +26,17 @@ const Header = ({ isHomePage }) => {
       style={{ color: textColor }}
     >
       <div className="header-brand">
-        <NavLink to="/" className="brand brand-link" end aria-label="TOOR — Trang chủ">
-          <img
-            className="brand-logo"
-            src={isScrolled ? '/images/logo%20toor-01.svg' : '/images/logo%20toor-02.svg'}
-            alt="TOOR Hotpot Together"
-            width={375}
-            height={117}
-          />
-        </NavLink>
+        {window.location.pathname !== '/booking' && (
+          <NavLink to="/" className="brand brand-link" end aria-label="TOOR — Trang chủ">
+            <img
+              className="brand-logo"
+              src={(isHomePage && !isScrolled) ? '/images/logo%20toor-02.svg' : '/images/logo%20toor-01.svg'}
+              alt="TOOR Hotpot Together"
+              width={375}
+              height={117}
+            />
+          </NavLink>
+        )}
       </div>
       <div className="header-nav">
         <nav className="nav-links" aria-label="Điều hướng chính">

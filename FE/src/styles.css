@@ -17,13 +17,13 @@
   --toor-border-soft: rgba(31, 41, 55, 0.1);
   color-scheme: light;
   --quicksand-font-size: 1.3rem;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   background: var(--toor-cream);
   color: var(--toor-ink);
 }
 
-/* Lenis: tránh xung đột với CSS scroll-behavior khi đang smooth */
+
 html.lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -33,9 +33,7 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: 'iCielBC Lodestone', sans-serif;
-}
+h6 {}
 
 * {
   box-sizing: border-box;
@@ -115,7 +113,7 @@ html,
 }
 
 .brand {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--toor-cream);
@@ -141,7 +139,7 @@ html,
   transition: filter 0.35s ease, height 0.3s ease, max-width 0.3s ease;
 }
 
-/* Trang chủ: chưa scroll logo kem (gần --toor-cream), sau khi scroll logo đỏ (--toor-red) */
+
 .header--home:not(.is-scrolled) .brand-logo {
   filter: none;
 }
@@ -150,7 +148,7 @@ html,
   filter: none;
 }
 
-/* Trang chủ: sau scroll bỏ thanh full-width; menu gói trong pill */
+
 .header--home.is-scrolled {
   background: transparent;
   backdrop-filter: none;
@@ -194,9 +192,7 @@ html,
   background: rgba(15, 23, 42, 0.06);
 }
 
-.header--home.is-scrolled 
-
-.header--home.is-scrolled .nav-links a.active:hover,
+.header--home.is-scrolled .header--home.is-scrolled .nav-links a.active:hover,
 .header--home.is-scrolled .nav-links a.active:focus-visible {
   background: var(--toor-red-hover);
 }
@@ -216,7 +212,7 @@ html,
   padding: 0.5rem 0;
   font-weight: 700;
   font-size: 1.05rem;
-  /* TĂNG KÍCH THƯỚC CHỮ MENU */
+  
   display: flex;
   align-items: center;
   transition: all 0.2s;
@@ -236,6 +232,7 @@ html,
 .nav-links a:hover:not(.active) {
   opacity: 1;
   color: #000 !important;
+  font-weight: bold;
 }
 
 
@@ -260,7 +257,7 @@ html,
   max-width: none;
 }
 
-/* Home hero: artwork background + headline overlay */
+
 .home-hero {
   position: relative;
   min-height: 100svh;
@@ -275,7 +272,7 @@ html,
   background-repeat: no-repeat;
 }
 
-/* Căn theo ~1/3 chiều cao hero; tối thiểu dưới header fixed (logo lớn) */
+
 .home-hero__inner {
   position: absolute;
   left: 50%;
@@ -307,7 +304,7 @@ html,
 .home-hero__title {
   margin: 0;
   color: var(--toor-cream);
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   text-transform: uppercase;
   text-align: center;
   line-height: 1.35;
@@ -320,7 +317,7 @@ html,
   white-space: nowrap;
 }
 
-/* TOORStory — dưới hero */
+
 .toor-story {
   background: var(--toor-cream);
   color: var(--toor-ink);
@@ -343,7 +340,7 @@ html,
 }
 
 .toor-story__title {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   color: var(--toor-red);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -360,7 +357,7 @@ html,
 }
 
 .toor-story__copy p {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   font-size: var(--quicksand-font-size);
   line-height: 1.85;
@@ -417,13 +414,13 @@ html,
   }
 }
 
-/* 5 vị lẩu quốc tế — band trắng/đỏ 50%, vòng cắt đôi, mascot sau lớp đỏ */
+
 .intl-broths {
   --intl-broths-red: var(--toor-red);
   --intl-thumb-d: clamp(6.25rem, 13vw, 9.25rem);
-  /* Kéo mép trên nền đỏ lên ~1/2 đường kính vòng để cắt đúng nửa ảnh sản phẩm */
+  
   --intl-red-lift: calc(var(--intl-thumb-d) * 0.16);
-  /* Dịch mascot sang trái (px + vw) — không phụ thuộc max(0.25rem, calc âm) trên màn hẹp */
+  
   --intl-mascot-shift-x: calc(-40px - 4vw);
   position: relative;
   overflow-x: visible;
@@ -437,7 +434,7 @@ html,
   position: relative;
 }
 
-/* Tiêu đề tách hẳn khỏi hàng vòng — không chồng lên ảnh */
+
 .intl-broths__head {
   position: relative;
   z-index: 5;
@@ -454,7 +451,7 @@ html,
   flex-wrap: nowrap;
   align-items: baseline;
   gap: 0.35rem 0.55rem;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   text-transform: uppercase;
   line-height: 1.05;
   white-space: nowrap;
@@ -468,7 +465,7 @@ html,
   flex-shrink: 0;
 }
 
-/* Cùng cỡ .toor-story__title */
+
 .intl-broths__title-text {
   font-size: clamp(1.65rem, 3.2vw, 2.35rem);
   line-height: 1.15;
@@ -476,7 +473,7 @@ html,
   color: var(--intl-broths-red);
 }
 
-/* Khối sản phẩm + nền chia đôi */
+
 .intl-broths__band {
   position: relative;
   isolation: isolate;
@@ -505,7 +502,7 @@ html,
   background: var(--intl-broths-red);
 }
 
-/* Wrapper: neo phải + dịch trái rõ (màn hẹp: max(0.25rem, âm) khiến right gần như cố định) */
+
 .intl-broths__mascot-wrap {
   position: absolute;
   z-index: 1;
@@ -518,7 +515,7 @@ html,
   transform-origin: right top;
 }
 
-/* Ảnh: chỉ scale + dọc; translate ngang nằm ở wrap */
+
 .intl-broths__mascots {
   display: block;
   width: 100%;
@@ -551,7 +548,7 @@ html,
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: clamp(0.55rem, 1.75vw, 1.2rem);
-  /* Ít kéo lên: mép đỏ đã nâng theo đường kính vòng */
+  
   transform: translateY(calc(var(--intl-thumb-d) * -0.02));
 }
 
@@ -589,7 +586,7 @@ html,
 
 .intl-broths__label {
   margin: 0;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   font-size: var(--quicksand-font-size);
   line-height: 1.3;
@@ -597,7 +594,7 @@ html,
   text-wrap: balance;
 }
 
-/* Đoạn mô tả — dưới vùng đỏ (sau band) */
+
 .intl-broths__copy {
   flex: 0 0 auto;
   width: 100%;
@@ -609,7 +606,7 @@ html,
 
 .intl-broths__copy p {
   margin: 0 0 1.05rem;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   font-size: var(--quicksand-font-size);
   line-height: 1.85;
@@ -662,7 +659,7 @@ html,
   }
 }
 
-/* Món ăn đặc sắc — lưới 3×2, nền trắng */
+
 .special-dishes {
   --special-dishes-red: var(--toor-red);
   background: var(--toor-cream);
@@ -671,7 +668,7 @@ html,
   padding-inline: 0;
 }
 
-/* Tiêu đề full-bleed: vạch đỏ kéo tới mép viewport */
+
 .special-dishes__head {
   width: 100%;
   margin-bottom: clamp(1.25rem, 3vw, 2rem);
@@ -697,7 +694,7 @@ html,
   align-items: center;
   justify-content: center;
   gap: clamp(0.65rem, 2vw, 1.35rem);
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   text-transform: uppercase;
   letter-spacing: 0.04em;
   line-height: 1.1;
@@ -755,7 +752,7 @@ html,
 
 .special-dishes__caption {
   margin: 0;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   font-size: var(--quicksand-font-size);
   line-height: 1.35;
@@ -792,7 +789,7 @@ html,
   }
 }
 
-/* Không gian — mirror Toor story: ảnh trái bo phải, nền đỏ, chữ trắng */
+
 .home-space {
   --home-space-red: var(--toor-red);
   background: var(--home-space-red);
@@ -817,7 +814,7 @@ html,
 }
 
 .home-space__title {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   color: var(--toor-cream);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -834,7 +831,7 @@ html,
 }
 
 .home-space__copy p {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   font-size: var(--quicksand-font-size);
   line-height: 1.85;
@@ -955,7 +952,7 @@ html,
 
 .page-header h1,
 .page-section h1 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: clamp(2rem, 2.4vw, 3rem);
   margin: 0;
   color: var(--toor-red);
@@ -1003,7 +1000,7 @@ html,
   font-weight: 700;
 }
 
-/* --- Promotions (above footer) --- */
+
 .promo {
   background: var(--toor-cream);
   padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1rem, 3vw, 1.5rem) clamp(2.25rem, 5vw, 3rem);
@@ -1019,7 +1016,7 @@ html,
 .promo__title {
   margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
   text-align: center;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: clamp(1.65rem, 3.2vw, 2.35rem);
   line-height: 1.15;
   font-weight: 800;
@@ -1274,7 +1271,7 @@ html,
 
 .footer__heading {
   margin: 0 0 0.85rem;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: clamp(1.05rem, 0.5vw + 0.95rem, 1.2rem);
   font-weight: 700;
   color: var(--toor-cream);
@@ -1339,7 +1336,7 @@ html,
 }
 
 .footer__contact-text {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 700;
   font-size: var(--quicksand-font-size);
   line-height: 1.5;
@@ -1425,6 +1422,7 @@ html,
 
 .menu-layout {
   grid-template-columns: 260px 1fr;
+  align-items: start; 
 }
 
 .menu-sidebar {
@@ -1435,7 +1433,7 @@ html,
 }
 
 .menu-sidebar h2 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   margin-top: 0;
 }
 
@@ -1456,8 +1454,12 @@ html,
   gap: 1.5rem;
 }
 
+.menu-content {
+  padding-top: 0 !important;
+}
+
 .menu-group h2 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   margin: 0 0 1rem;
 }
 
@@ -1490,7 +1492,7 @@ html,
 }
 
 .card-content h3 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   margin: 0 0 0.5rem;
 }
 
@@ -1548,7 +1550,7 @@ html,
 }
 
 .restaurant-card h3 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   margin: 0 0 0.35rem;
 }
 
@@ -1700,7 +1702,7 @@ select {
   padding: 1rem;
 }
 
-/* Update menu-sidebar */
+
 .menu-sidebar .category-list {
   list-style: none;
   padding: 0;
@@ -1745,7 +1747,7 @@ select {
 
 
 
-/* Update menu-cards for specific sizes */
+
 
 
 .menu-item-box:hover {
@@ -1776,7 +1778,7 @@ select {
   }
 }
 
-/* --- Booking Page Hero (Style matched to HomeHero) --- */
+
 .booking-page-hero {
   position: relative;
   min-height: 100vh;
@@ -1791,12 +1793,12 @@ select {
 
 .booking-input-group:last-of-type {
   border-right: none;
-  /* Ô cuối không có vách ngăn */
+  
 }
 
 .booking-input-group:last-of-type {
   border-right: none;
-  /* Ô cuối không có vách ngăn */
+  
 }
 
 
@@ -1838,7 +1840,7 @@ select {
 }
 
 .step-label {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -1919,12 +1921,12 @@ select {
 
 .summary-section {
   background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
+  padding: 3.5rem;
   border-radius: 1rem;
 }
 
 .summary-section p {
-  margin: 0.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .success-icon-large {
@@ -1960,7 +1962,7 @@ select {
 
 .booking-input-group input {
   color: #da2128 !important;
-  font-size: 1.2rem !important;
+  font-size: 1.4rem !important;
   font-weight: 800 !important;
 }
 
@@ -2001,10 +2003,10 @@ select {
   width: 60px;
 }
 
-/* Giả lập Icon Chevron */
 
 
-/* Giả lập Icon Calendar */
+
+
 
 
 .icon-calendar::before {
@@ -2047,12 +2049,12 @@ select {
 
 .booking-bar-item label {
   font-size: 1.1rem !important;
-  /* Font to */
+  
   color: #666;
   white-space: nowrap;
   font-weight: 700;
   margin: 0;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
 }
 
 
@@ -2061,13 +2063,13 @@ select {
   border: none;
   background: transparent;
   color: #333;
-  font-size: 1.3rem !important;
-  /* Font to */
+  font-size: 1.6rem !important;
+  
   font-weight: 900;
   width: 120px;
   outline: none;
   padding: 0;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
 }
 
 .input-with-icon input[name='guest_count'] {
@@ -2110,54 +2112,54 @@ select {
   border: none;
   background: transparent;
   color: #333;
-  font-size: 1.3rem !important;
+  font-size: 1.6rem !important;
   font-weight: 900;
   width: 120px;
   outline: none;
   padding: 0;
   cursor: pointer;
-  font-family: 'iCielBC Lodestone', sans-serif;
+
 }
 
 .input-with-icon select[name='guest_count'] {
   width: 60px;
 }
 
-/* Vô hiệu hóa tương tác chuột của icon để click xuyên qua vào select */
+
 .icon-chevron,
 
 
 
-/* --- Tùy chỉnh Step 1 Form Đặt Bàn (Chuẩn theo Design) --- */
-
-/* Khối bo tròn màu trắng bọc ngoài cùng */
 
 
-/* Nhóm các input được bọc viền đỏ */
 
 
-/* Từng cột input */
 
 
-/* Xóa vạch chia ở ô cuối cùng */
+
+
+
+
+
+
 .bf-input-col:last-child {
   border-right: none;
 }
 
-/* Chữ nhãn (Số người:, Ngày:) */
-
-
-/* Thẻ input & select */
-
-
-/* FIX LỖI ICON SELECT: Ẩn icon mặc định & thêm mũi tên xịn. Do thêm bằng background-image nên bấm vào đâu cũng mở được dropdown */
-
-
-/* Định dạng mượt hơn cho icon lịch của input date */
 
 
 
-/* Nút bấm (nằm trong mảng trắng) */
+
+
+
+
+
+
+
+
+
+
+
 
 
 .bf-submit-btn:hover {
@@ -2165,7 +2167,7 @@ select {
   transform: translateY(-1px);
 }
 
-/* Đáp ứng giao diện di động */
+
 @media (max-width: 800px) {
 
 
@@ -2187,7 +2189,7 @@ select {
   z-index: 10;
 }
 
-/* --- Tùy chỉnh Step 1 Form Đặt Bàn (Chuẩn theo Design) --- */
+
 
 .booking-form-step1 {
   display: flex;
@@ -2199,7 +2201,8 @@ select {
   gap: 2rem;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   width: 95%;
-  max-width: 1100px;
+  max-width: 1250px;
+  transform: translateY(-10px);
 
 }
 
@@ -2225,7 +2228,7 @@ select {
 }
 
 .bf-label {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 600;
   color: #666;
   margin-right: 0.5rem;
@@ -2235,7 +2238,7 @@ select {
 
 .bf-select,
 .bf-date {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   flex: 1;
   border: none;
   background: transparent;
@@ -2257,7 +2260,7 @@ select {
 }
 
 .bf-submit-btn {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   background: #c41e25;
   color: #ffffff;
   border: none;
@@ -2276,7 +2279,7 @@ select {
   box-shadow: 0 5px 15px rgba(196, 30, 37, 0.3);
 }
 
-/* --- Khu vực kết quả đặt bàn --- */
+
 .booking-results-area {
   background: var(--toor-cream);
   min-height: 0;
@@ -2292,7 +2295,7 @@ select {
 }
 
 .results-title {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   color: var(--toor-red);
   text-align: center;
   font-size: 2.2rem;
@@ -2331,7 +2334,7 @@ select {
 }
 
 .branch-card-info h3 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: 1.3rem;
   margin: 0 0 0.5rem;
   color: var(--toor-ink);
@@ -2381,7 +2384,7 @@ select {
   margin-top: 2rem;
 }
 
-/* --- Xác nhận thông tin --- */
+
 .booking-confirmation-wrapper {
   max-width: 800px;
   margin: 0 auto;
@@ -2434,7 +2437,7 @@ select {
 
 .summary-item span {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 10000;
   color: var(--toor-ink);
 }
 
@@ -2475,22 +2478,21 @@ select {
   }
 }
 
-/* --- Buffet Gallery Styles --- */
+
 .buffet-gallery {
   padding-top: 0;
-  /* GIẢM PADDING ĐỂ NHÍCH LÊN */
+  
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .gallery-container {
-  margin-top: 0.5rem;
-  /* GIẢM MARGIN ĐỂ NHÍCH LÊN */
+  margin-top: 0;
+  
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-top: 2rem;
   position: relative;
 }
 
@@ -2516,7 +2518,7 @@ select {
   margin-top: 1rem;
   font-weight: 700;
   color: var(--toor-red);
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: 1.1rem;
 }
 
@@ -2550,7 +2552,7 @@ select {
 @media (max-width: 768px) {
   .gallery-container {
     margin-top: 0.5rem;
-    /* GIẢM MARGIN ĐỂ NHÍCH LÊN */
+    
     gap: 1rem;
   }
 
@@ -2564,9 +2566,9 @@ select {
 .menu-grid-new {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  /* MỞ RỘNG CHIỀU RỘNG Ô */
+  
   gap: 2.5rem;
-  /* TĂNG KHOẢNG CÁCH GIỮA CÁC Ô */
+  
   padding: 1rem 0;
 }
 
@@ -2600,7 +2602,7 @@ select {
 }
 
 .menu-item-name h3 {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-size: 1.2rem;
   margin: 0;
   color: var(--toor-ink);
@@ -2608,14 +2610,14 @@ select {
 }
 
 .menu-item-name .price {
-  font-family: 'iCielBC Lodestone', sans-serif;
+
   font-weight: 800;
   color: var(--toor-red);
   font-size: 1.1rem;
 }
 
 
-/* --- Style Active cho Menu chính --- */
+
 .nav-links a.active {
   color: var(--toor-cream) !important;
   background: var(--toor-red) !important;
@@ -2629,12 +2631,12 @@ select {
   background: var(--toor-red-hover) !important;
 }
 
-/* Ẩn vạch chia | khi mục đó đang active */
+
 .nav-links a.active::after {
   display: none !important;
 }
 
-/* --- Fix màu Menu Sidebar khi Active --- */
+
 .menu-sidebar .category-title.active {
   color: var(--toor-red) !important;
   background: rgba(218, 33, 40, 0.05);
@@ -2646,4 +2648,296 @@ select {
   background: rgba(218, 33, 40, 0.08);
   border-left: 3px solid var(--toor-red);
   padding-left: 0.8rem;
+}
+
+
+body,
+input,
+button,
+select,
+textarea,
+h3,
+h4,
+h5,
+h6,
+
+.price,
+.bf-label,
+.bf-select,
+.bf-date,
+.bf-submit-btn,
+.button {
+  font-family: 'Quicksand', sans-serif !important;
+}
+
+
+h1,
+h2,
+.page-header h1,
+.promo__title,
+.toor-story__title,
+.home-hero__title {
+  font-family: 'iCielBC Lodestone', sans-serif !important;
+}
+
+
+.menu-item-name h3,
+
+.nav-links a,
+.breadcrumb,
+.footer__heading {
+  font-family: 'iCielBC Lodestone', sans-serif !important;
+}
+
+
+.menu-item-name h3,
+.menu-item-box h3 {
+  font-family: 'iCielBC Lodestone', sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+.booking-form-step1 {
+  background: #ffffff;
+  padding: 5rem 4rem;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  min-height: 200px;
+  max-width: 1250px;
+  transform: translateY(-50px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bf-inputs-group {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  border: 1.5px solid var(--toor-red);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bf-input-col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  border-right: 1.5px solid var(--toor-red);
+  background: transparent;
+}
+
+.bf-input-col:last-child {
+  border-right: none;
+}
+
+.bf-label {
+  font-size: 1.4rem !important;
+  
+  font-weight: 700 !important;
+  color: var(--toor-ink);
+  white-space: nowrap;
+}
+
+.bf-select,
+.bf-date {
+  font-size: 1.6rem !important;
+  
+  font-weight: 800 !important;
+  color: var(--toor-red);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.bf-submit-btn {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.4rem !important;
+  border-radius: 12px;
+  height: 100%;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.bf-submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(196, 30, 37, 0.3);
+}
+
+@media (max-width: 992px) {
+  .booking-form-step1 {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .bf-inputs-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bf-input-col {
+    border-right: none;
+    border-bottom: 1.5px solid var(--toor-red);
+  }
+}
+
+
+.results-title {
+  font-size: 2.5rem !important;
+  
+  margin-bottom: 3rem !important;
+}
+
+.branch-card {
+  padding: 2.5rem !important;
+  
+  gap: 2rem !important;
+}
+
+.branch-card-info h3 {
+  font-size: 1.8rem !important;
+  
+  margin-bottom: 0.8rem !important;
+}
+
+.branch-card-info p {
+  font-size: 1.2rem !important;
+  
+  line-height: 1.6 !important;
+}
+
+.branch-card-select .radio-circle {
+  width: 35px !important;
+  
+  height: 35px !important;
+}
+
+.branch-card.active .radio-circle::after {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.results-actions button {
+  padding: 1.2rem 3rem !important;
+  font-size: 1.2rem !important;
+}
+
+
+.order-page-container .button {
+  padding: 1.2rem 2.5rem !important;
+  font-size: 1.2rem !important;
+  min-height: 55px !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+}
+
+.order-page-container .button-primary:hover,
+.order-page-container .button-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-page-container .step-navigation-buttons {
+  margin-top: 3rem !important;
+  gap: 2rem !important;
+}
+
+
+
+
+
+
+.order-confirmation-wrapper {
+  max-width: 640px;
+  width: min(100%, 640px);
+  margin: 0 auto;
+}
+
+.order-summary-card {
+  width: 100%;
+  background: #ffffff;
+  padding: 1.8rem 1.1rem;
+  border: 10px solid var(--toor-border);
+  border-radius: 10px;
+  font-family: 'Quicksand', sans-serif !important;
+  text-align: left !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.order-summary-card .summary-section {
+  margin: 0 !important;
+  padding: 0.1rem 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.order-summary-card .summary-section h3 {
+  font-family: 'Quicksand', sans-serif !important;
+  color: var(--toor-red);
+  font-size: 1.15rem !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.1rem !important;
+  margin-top: 0 !important;
+  border-bottom: 1.5px solid var(--toor-red);
+  padding-bottom: 2px;
+  text-align: left !important;
+}
+
+.order-summary-card .info-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  font-size: 1.05rem !important;
+  padding: 0.1rem 0 !important;
+  text-align: left !important;
+}
+
+.order-summary-card .summary-item {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0.15rem 0 !important;
+  border-bottom: 1px dashed #eee;
+  font-size: 1.05rem !important;
+  gap: 1rem;
+}
+
+.order-summary-card .item-name {
+  text-align: left !important;
+  flex: 1 !important;
+  font-weight: 700;
+}
+
+.order-summary-card .item-price {
+  text-align: right !important;
+  flex-shrink: 0 !important;
+  font-weight: 700;
+  color: var(--toor-red);
+  white-space: nowrap;
+}
+
+.total-divider {
+  height: 1.5px;
+  background: var(--toor-ink);
+  margin: 0.5rem 0;
+}
+
+.total-payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.2rem !important;
+}
+
+.total-amount {
+  color: var(--toor-red);
+  font-size: 1.3rem !important;
 }
