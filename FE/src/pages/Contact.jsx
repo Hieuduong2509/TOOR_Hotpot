@@ -22,23 +22,51 @@ const Contact = () => {
         </div>
         <div className="contact-info">
           <h2>Thông tin liên hệ</h2>
-          <p style={{ fontWeight: 'bold' }}>TOOR Hotpot - Chuỗi nhà hàng lẩu cao cấp.</p>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <img width="24" height="24" src="https://img.icons8.com/?size=100&id=qbDdDnJoMZMV&format=png&color=000000" alt="address" /><strong>Địa chỉ:</strong> Tầng 4, Crescent Mall, 101 Tôn Dật Tiên, Phường Tân Mỹ, TP. Hồ Chí Minh</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <img width="24" height="24" src="https://img.icons8.com/?size=100&id=12921&format=png&color=000000" alt="phone" /><strong>Điện thoại:</strong> +84 28 3911 1100</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <img width="24" height="24" src="https://img.icons8.com/?size=100&id=s0rF94zLrv5y&format=png&color=000000" alt="time" /><strong>Giờ làm việc:</strong> 10:00 - 23:00 mỗi ngày</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <img width="24" height="24" src="https://img.icons8.com/?size=100&id=YbPqIO0gOrT3&format=png&color=000000" alt="email" /><strong>Email:</strong> dhtonducthang@tdtu.edu.vn</li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <img width="24" height="24" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook" />
-              <strong>Facebook:</strong> <a href="https://facebook.com/dhtonducthang" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--toor-ink)' }}>facebook.com/dhtonducthang</a>
+          <p style={{ fontWeight: 'bold', color: 'var(--toor-ink)', fontSize: '1.05rem', marginBottom: '1.25rem' }}>
+            TOOR Hotpot - Chuỗi nhà hàng lẩu cao cấp.
+          </p>
+          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <img style={{ marginTop: '3px', flexShrink: 0 }} width="24" height="24" src="https://img.icons8.com/?size=100&id=qbDdDnJoMZMV&format=png&color=000000" alt="address" />
+              <div style={{ flex: 1, color: 'var(--toor-ink)', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                <strong>Địa chỉ:</strong> Tầng 4, Crescent Mall, 101 Tôn Dật Tiên, Phường Tân Mỹ, TP. Hồ Chí Minh
+              </div>
             </li>
-            <li style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <img width="24" height="24" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram" />
-              <strong>Instagram:</strong> <a href="https://instagram.com/dhtonducthang" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--toor-ink)' }}>instagram.com/dhtonducthang</a>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <img style={{ marginTop: '3px', flexShrink: 0 }} width="24" height="24" src="https://img.icons8.com/?size=100&id=12921&format=png&color=000000" alt="phone" />
+              <div style={{ flex: 1, color: 'var(--toor-ink)', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                <strong>Điện thoại:</strong> +84 28 3911 1100
+              </div>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <img style={{ marginTop: '3px', flexShrink: 0 }} width="24" height="24" src="https://img.icons8.com/?size=100&id=s0rF94zLrv5y&format=png&color=000000" alt="time" />
+              <div style={{ flex: 1, color: 'var(--toor-ink)', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                <strong>Giờ làm việc:</strong> 10:00 - 23:00 mỗi ngày
+              </div>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <img style={{ marginTop: '3px', flexShrink: 0 }} width="24" height="24" src="https://img.icons8.com/?size=100&id=YbPqIO0gOrT3&format=png&color=000000" alt="email" />
+              <div style={{ flex: 1, color: 'var(--toor-ink)', fontSize: '0.95rem', lineHeight: '1.5', wordBreak: 'break-all' }}>
+                <strong>Email:</strong> dhtonducthang@tdtu.edu.vn
+              </div>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <img style={{ marginTop: '3px', flexShrink: 0 }} width="24" height="24" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook" />
+              <div style={{ flex: 1, color: 'var(--toor-ink)', fontSize: '0.95rem', lineHeight: '1.5', wordBreak: 'break-all' }}>
+                <strong>Facebook:</strong>{' '}
+                <a href="https://facebook.com/dhtonducthang" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--toor-red)', fontWeight: '600' }}>
+                  facebook.com/dhtonducthang
+                </a>
+              </div>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <img style={{ marginTop: '3px', flexShrink: 0 }} width="24" height="24" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram" />
+              <div style={{ flex: 1, color: 'var(--toor-ink)', fontSize: '0.95rem', lineHeight: '1.5', wordBreak: 'break-all' }}>
+                <strong>Instagram:</strong>{' '}
+                <a href="https://instagram.com/dhtonducthang" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--toor-red)', fontWeight: '600' }}>
+                  instagram.com/dhtonducthang
+                </a>
+              </div>
             </li>
           </ul>
           <div className="contact-cards">

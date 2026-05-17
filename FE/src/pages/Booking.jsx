@@ -14,7 +14,7 @@ const restaurantsData = [
   },
   {
     id: 2,
-    name: 'Manwah - TP.HCM',
+    name: 'Hotpot Story - TP.HCM',
     address: '123 Nguyễn Trãi, Quận 1, TP.HCM',
     open: '11:00',
     close: '23:00',
@@ -95,35 +95,43 @@ const Booking = () => {
         className="booking-page-hero"
         style={{ backgroundImage: "url('/images/image.png')" }}
       >
-        <div className="booking-hero-content">
-          <div className="booking-form-step1">
-            <div className="bf-inputs-group">
-              <div className="bf-input-col">
-                <span className="bf-label">Số người:</span>
-                <select className="bf-select" name="guest_count" value={formValues.guest_count} onChange={handleChange}>
-                  {[...Array(20)].map((_, i) => (
-                    <option key={i + 1} value={i + 1}>{String(i + 1).padStart(2, '0')}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="bf-input-col">
-                <span className="bf-label">Ngày:</span>
-                <input className="bf-date" type="date" name="date" value={formValues.date} onChange={handleChange} required />
-              </div>
-              <div className="bf-input-col">
-                <span className="bf-label">Giờ:</span>
-                <select className="bf-select" name="time" value={formValues.time} onChange={handleChange} required>
-                  <option value="" disabled hidden>Chọn giờ</option>
-                  {['10:00', '11:00', '12:00', '13:00', '17:00', '18:00', '19:00', '20:00', '21:00'].map(t => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <button className="bf-submit-btn" onClick={nextStep}>TÌM CHI NHÁNH</button>
-          </div>
+        <div className="booking-hero-logo-wrapper">
+          <img
+            className="booking-hero-logo"
+            src="/images/logo%20toor-01.svg"
+            alt="TOOR Hotpot Logo"
+          />
         </div>
       </section>
+
+      <div className="booking-hero-content">
+        <div className="booking-form-step1">
+          <div className="bf-inputs-group">
+            <div className="bf-input-col">
+              <span className="bf-label">Số người:</span>
+              <select className="bf-select" name="guest_count" value={formValues.guest_count} onChange={handleChange}>
+                {[...Array(20)].map((_, i) => (
+                  <option key={i + 1} value={i + 1}>{String(i + 1).padStart(2, '0')}</option>
+                ))}
+              </select>
+            </div>
+            <div className="bf-input-col">
+              <span className="bf-label">Ngày:</span>
+              <input className="bf-date" type="date" name="date" value={formValues.date} onChange={handleChange} required />
+            </div>
+            <div className="bf-input-col">
+              <span className="bf-label">Giờ:</span>
+              <select className="bf-select" name="time" value={formValues.time} onChange={handleChange} required>
+                <option value="" disabled hidden>Chọn giờ</option>
+                {['10:00', '11:00', '12:00', '13:00', '17:00', '18:00', '19:00', '20:00', '21:00'].map(t => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <button className="bf-submit-btn" onClick={nextStep}>TÌM CHI NHÁNH</button>
+        </div>
+      </div>
 
       {/* SECTION 2: RESULTS (Show Step 2, 3 here) */}
       <section className={`booking-results-area ${step > 1 ? 'is-visible' : ''}`} ref={resultsRef}>
@@ -133,8 +141,8 @@ const Booking = () => {
               <h2 className="results-title">CHỌN CHI NHÁNH PHÙ HỢP</h2>
               <div className="branch-grid">
                 {restaurantsData.map((rest) => (
-                  <div 
-                    key={rest.id} 
+                  <div
+                    key={rest.id}
                     className={`branch-card ${selectedRestaurant?.id === rest.id ? 'active' : ''}`}
                     onClick={() => setSelectedRestaurant(rest)}
                   >
@@ -144,15 +152,15 @@ const Booking = () => {
                       <p className="hours">Mở cửa: {rest.open} - {rest.close}</p>
                     </div>
                     <div className="branch-card-select">
-                       <div className="radio-circle"></div>
+                      <div className="radio-circle"></div>
                     </div>
                   </div>
                 ))}
               </div>
               <div className="results-actions">
                 <button className="btn-secondary" onClick={prevStep}>QUAY LẠI</button>
-                <button 
-                  className="btn-primary" 
+                <button
+                  className="btn-primary"
                   disabled={!selectedRestaurant}
                   onClick={nextStep}
                 >
@@ -168,7 +176,7 @@ const Booking = () => {
                 <div className="success-check">✓</div>
                 <h2>XÁC NHẬN THÔNG TIN ĐẶT BÀN</h2>
               </div>
-              
+
               <div className="summary-grid">
                 <div className="summary-item">
                   <label>Khách hàng:</label>
